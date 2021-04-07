@@ -18,19 +18,13 @@ export class MoviesComponent implements OnInit {
   }
 
   ngOnInit(){
-    let img = '';
-    this.movieService.getRandomImageForMovie().subscribe(z => {
-    }, (err) => {
-      img = err.url;
-      this.movieService.getMovies().subscribe(res => {
-        this.movies = res;
-        this.movies.forEach(element => {
-          element.imageUrl = img
-        });
-        this.allMovies = this.movies;
-      })
-    });
-    
+    this.movieService.getMovies().subscribe(res => {
+      this.movies = res;
+      this.movies.forEach(element => {
+        element.imageUrl = this.getRandomImageForMovie()
+      });
+      this.allMovies = this.movies;
+    })
   }
 
   filterMoviesByName(event: any) {
@@ -50,6 +44,10 @@ export class MoviesComponent implements OnInit {
   return arr;
   }
 
- 
+
+  getRandomImageForMovie(){
+    return '../../../assets/images/' + (Math.floor(Math.random() * (40)) + 1) + '.jpeg';
+  }
+
 
 }

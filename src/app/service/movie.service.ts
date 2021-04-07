@@ -24,10 +24,6 @@ export class MovieService {
       return this.http.get<Movie[]>(this.apiUrl + '/recommended/' + id+ '?type=' + type)
     }
 
-    getRandomImageForMovie(): Observable<any> {
-      return this.http.get<any>('https://source.unsplash.com/random/800x600')
-    }
-
     retrainModel(): Observable<any> {
       return this.http.get<any>(this.apiUrl + '/retrain')
     }

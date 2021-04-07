@@ -32,10 +32,7 @@ export class RecommendedComponent implements OnInit {
     this.movieService.getRecommendedMoviesByIdAndType(id, type).subscribe(res => {
       this.movies = res;
       this.movies.forEach(element => {
-        this.movieService.getRandomImageForMovie().subscribe(z => {
-        }, (err) => {
-          element.imageUrl = err.url;
-        });
+        element.imageUrl = this.getRandomImageForMovie();
       });
     })
   }
@@ -70,4 +67,9 @@ export class RecommendedComponent implements OnInit {
   roundRating(rating: number){
     // return Math.round(rating).toFixed();
   }
+
+  getRandomImageForMovie(){
+    return '../../../assets/images/' + (Math.floor(Math.random() * (40)) + 1) + '.jpeg';
+  }
+  
 }
