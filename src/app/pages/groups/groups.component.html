@@ -1,0 +1,25 @@
+<div class="heading-container d-flex">
+    <h1 class="page-heading my-auto">Groups <span> ({{groups.length}})</span></h1>
+</div>
+<div class="movie-grid">
+    <div class="header-row group-row row py-2">
+        <div class="col-4">
+            <span class="group-id">Group Id</span>
+        </div>
+        <div class="col-8">
+            <span>Users</span>
+        </div>
+    </div>
+<div class="group-row row py-2" *ngFor="let group of groups">
+    <div class="col-4">
+        <span class="group-id">{{group.groupId}}</span>
+    </div>
+    <div class="col-8">
+        <mat-chip-list aria-label="Fish selection">
+            <mat-chip  class="user-chip" *ngFor="let user of group.users.split(',')" [removable]="true">{{user}}
+                <mat-icon class="cancel-icon" matChipRemove>cancel</mat-icon>
+            </mat-chip>
+          </mat-chip-list>
+    </div>
+</div>
+</div>

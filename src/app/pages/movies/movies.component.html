@@ -1,0 +1,31 @@
+<div class="heading-container d-flex">
+    <h1 class="page-heading my-auto">All Movies</h1>
+    <mat-form-field appearance="fill" class="ml-auto">
+        <input matInput placeholder="Search Movie" (input)="filterMoviesByName($event)" value="">
+      </mat-form-field>
+</div>
+<cdk-virtual-scroll-viewport itemSize="80" class="movies-viewport">
+<div class="movie-grid row">
+    
+        <div *cdkVirtualFor="let movie of movies" class="col-12 col-md-6 col-lg-4 my-2 p-0 list">
+            <div class="d-flex">
+                <div class="movie-image" style="background:url('{{movie.imageUrl}}');"></div>
+                <div class="ml-2">
+                    <span class="movie-title">{{movie.movieTitle}}</span>
+                    <span class="movie-rating d-flex flex-row mt-2">
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                    </span>
+                    <div class="mt-2">
+                        <span class="movie-genre" *ngFor="let category of getCategories(movie)">
+                            {{category}}
+                        </span>
+                    </div>
+                </div>
+            </div>
+         </div>
+</div>
+</cdk-virtual-scroll-viewport>

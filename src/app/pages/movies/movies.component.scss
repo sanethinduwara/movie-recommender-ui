@@ -1,0 +1,29 @@
+.movie-image {
+    min-width:100px;
+    height: 100px;
+    width: 100px;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.movie-title {
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.movies-viewport{
+    height: 100%;
+    width: 100%;
+    display: flex;
+}
+
+.movie-genre {
+    color: white;
+    background-color: #ffffff2d;
+    font-size: 10px;
+    font-weight: 500;
+    border-radius: 5px;
+    padding: 2px 5px;
+    margin-right: 4px;
+}

@@ -1,0 +1,11 @@
+<div class="heading-container d-flex">
+    <h1 class="page-heading my-auto">Admin</h1>
+</div>
+
+<div class="movie-grid">
+    <div class="d-flex">
+        <button class="button" mat-raised-button [disabled]="isTraining" (click)=retrainModel()>Retrain Model</button>
+        <mat-spinner class="ml-2 my-auto" *ngIf="isTraining" [diameter]="25"></mat-spinner>
+    </div>
+    <div class="mt-5 evaluation-metrics">RMSE : <span>{{RMSE}}</span></div>
+</div>

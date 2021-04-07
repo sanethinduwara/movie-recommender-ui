@@ -1,0 +1,70 @@
+.mat-drawer-container {
+    background: #0F2027;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #2C5364, #203A43, #0F2027);
+    background: linear-gradient(to left, #2C5364, #203A43, #0F2027); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+.mat-drawer{
+    background: rgba($color: #000000, $alpha: 0.4);
+}
+.mat-drawer a {
+    color: white;
+    padding: 0 20px;
+}
+.mat-drawer a:hover {
+    border-left-color: #09ccc3;
+    border-left-width: 7px;
+    border-left-style: solid;
+}
+.mat-drawer-content{
+    background: linear-gradient(rgba($color: #000000, $alpha: 0.5), rgba($color: #000000, $alpha: 0.7));
+}
+.example-container {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+  
+  .example-is-mobile .example-toolbar {
+    position: fixed;
+    z-index: 2;
+  }
+  
+  h1.example-app-name {
+    margin-left: 8px;
+  }
+  
+  .example-sidenav-container {
+    flex: 1;
+  }
+  
+  .example-is-mobile .example-sidenav-container {
+    flex: 1 0 auto;
+  }
+  
+  ::ng-deep .page-heading {
+    font-size: 24px;
+    font-weight: bold !important;
+    color: white;
+}
+
+::ng-deep .heading-container {
+  margin: 45px 120px 0 120px;
+}
+
+.profile-img {
+  height: 55px;
+  width: 55px;
+  background: url('../assets/images/girl_profile_pic.png');
+  background-size: cover;
+  border-radius: 50%;
+}
+
+.logout-btn {
+  color: #43af00;
+  padding: 10px 36px;
+}

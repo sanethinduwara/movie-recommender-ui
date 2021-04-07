@@ -1,0 +1,35 @@
+<div class="heading-container d-flex">
+    <h1 class="page-heading my-auto">Recommended</h1>
+    <mat-slide-toggle (checked)="isGroup" (click)="onToggleClick()" class="my-auto ml-auto">for Group</mat-slide-toggle>
+    <mat-form-field *ngIf="isGroup" class="ml-2" appearance="fill">
+      <!-- <mat-label>Select Group</mat-label> -->
+      <mat-select (selectionChange)="onGroupChange($event)" [value]="groups[0].groupId">
+        <mat-option *ngFor="let group of groups" [value]="group.groupId">
+          {{group.groupId}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <mat-grid-list class="movie-grid" cols="5" rowHeight="3:4" gutterSize="10">
+    <mat-grid-tile *ngFor="let movie of movies">
+      <div class="movie-container d-flex flex-column" style="background: linear-gradient(rgba(0,0,0,0.01), rgba(0,0,0,0.9)), url('{{movie.imageUrl}}');">
+        <div class="predicted-rating ml-auto mt-2 mr-2 d-flex" aria-label="Predicted Score"><span class="m-auto">{{movie.rating.toFixed(1)}}</span></div>
+        <div class="movie-details mt-auto mx-3 mb-4">
+          <span class="movie-title">{{movie.movieTitle}}</span>
+          <span class="movie-rating d-flex flex-row mt-2">
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star"></span>
+          </span>
+          <div class="mt-2">
+            <span class="movie-genre" *ngFor="let category of getCategories(movie)">
+                {{category}}
+            </span>
+        </div>
+        </div>
+      </div>
+    </mat-grid-tile>
+  </mat-grid-list>
+  

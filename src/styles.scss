@@ -1,1 +1,77 @@
-/* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/dist/css/bootstrap.css";
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import '~@angular/material/theming';
+@include mat-core();
+
+$group-movie-recommendation-primary: mat-palette($mat-indigo);
+$group-movie-recommendation-accent: mat-palette($mat-pink, A200, A100, A400);
+
+$group-movie-recommendation-warn: mat-palette($mat-red);
+
+$group-movie-recommendation-theme: mat-light-theme((
+  color: (
+    primary: $group-movie-recommendation-primary,
+    accent: $group-movie-recommendation-accent,
+    warn: $group-movie-recommendation-warn,
+  )
+));
+
+
+@include angular-material-theme($group-movie-recommendation-theme);
+
+
+body {
+  font-family: 'Poppins', sans-serif !important;
+  margin: 0;
+  padding: 30px;
+}
+
+.movie-grid { 
+  margin: 40px 120px;
+}
+
+.movie-rating .checked{
+  color: orange;
+}
+
+.movie-rating span {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 18px;
+  padding: 1px;
+}
+
+
+.mat-form-field-appearance-fill .mat-form-field-flex {
+  background-color: rgba($color: #ffffff, $alpha: 0.08) !important;
+  border-radius: 8px !important;
+  padding-top: 0 !important;
+}
+
+.mat-form-field-appearance-fill .mat-select-arrow-wrapper {
+  transform: none !important;
+}
+
+.mat-form-field-wrapper {
+  padding-bottom: 0 !important;
+}
+
+.mat-form-field-underline {
+  display: none;
+}
+
+.mat-select-value-text {
+  color: white !important;
+
+}
+
+input.mat-input-element {
+  color: white;
+}
+
+.mat-input-element {
+  caret-color: #09ccc3;
+}
+
+::ng-deep.mat-form-field-placeholder, .mat-focused .mat-form-field-placeholder {
+  color: white !important;
+}
