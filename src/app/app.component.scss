@@ -68,3 +68,7 @@
   color: #43af00;
   padding: 10px 36px;
 }
+
+::ng-deep .mat-progress-spinner circle, .mat-spinner circle {
+  stroke: #43af00;
+}

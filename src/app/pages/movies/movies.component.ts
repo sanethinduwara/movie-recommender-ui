@@ -31,19 +31,22 @@ export class MoviesComponent implements OnInit {
     this.movies = this.allMovies.filter(m => m.movieTitle.toLowerCase().includes(event.target.value.toString().toLowerCase()))
   }
 
-  getCategories(movie : any){
-    let arr:string[] = []
-    Object.getOwnPropertyNames(movie).forEach(key => {
-      if(!['movieId'].includes(key)) {
-        if (movie[key] === 1) {
-          arr.push(key);
-        }
-      }
+  // getCategories(movie : any){
+  //   let arr:string[] = []
+  //   Object.getOwnPropertyNames(movie).forEach(key => {
+  //     if(!['movieId'].includes(key)) {
+  //       if (movie[key] === 1) {
+  //         arr.push(key);
+  //       }
+  //     }
       
-  });
-  return arr;
-  }
+  // });
+  // return arr;
+  // }
 
+  getCategories(movie : any){
+    return movie.genre.split("|")
+  }
 
   getRandomImageForMovie(){
     return '../../../assets/images/' + (Math.floor(Math.random() * (40)) + 1) + '.jpeg';

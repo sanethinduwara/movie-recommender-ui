@@ -13,9 +13,10 @@ export class RecommendedComponent implements OnInit {
   
   movies: Movie[] = [];
   movieService: MovieService;
-  groups = [{groupId: 1}, {groupId: 2}, {groupId: 3}, {groupId: 4}, {groupId: 5}]
+  groups:any[] = []
   isGroup:boolean = false;
   currentUser: any = null;
+  loading = false;
 
   constructor(movieService: MovieService, private authService:AuthenticationService) {
     this.movieService = movieService;
@@ -26,14 +27,23 @@ export class RecommendedComponent implements OnInit {
   ngOnInit(){
     this.isGroup = false;
     this.loadMoviesByIdAndType(this.currentUser.id, 'user');
+    this.loadGroupsForUser(this.currentUser.id);
   }
 
   loadMoviesByIdAndType(id: number, type: string){
+    this.loading = true;
     this.movieService.getRecommendedMoviesByIdAndType(id, type).subscribe(res => {
       this.movies = res;
       this.movies.forEach(element => {
         element.imageUrl = this.getRandomImageForMovie();
       });
+      this.loading = false;
+    })
+  }
+
+  loadGroupsForUser(id: number){
+    this.movieService.getGroupsByUserId(id).subscribe(res=> {
+      this.groups = res;
     })
   }
 
@@ -52,20 +62,21 @@ export class RecommendedComponent implements OnInit {
     this.loadMoviesByIdAndType(event.value, 'group');
   }
 
-  getCategories(movie : any){
-    let arr:string[] = []
-    Object.getOwnPropertyNames(movie).forEach(key => {
-      if(!['movieId'].includes(key)) {
-        if (movie[key] === 1) {
-          arr.push(key);
-        }
-      }
+  // getCategories(movie : any){
+  //   let arr:string[] = []
+  //   Object.getOwnPropertyNames(movie).forEach(key => {
+  //     if(!['movieId'].includes(key)) {
+  //       if (movie[key] === 1) {
+  //         arr.push(key);
+  //       }
+  //     }
       
-  });
-  return arr;
-  }
-  roundRating(rating: number){
-    // return Math.round(rating).toFixed();
+  // });
+  // return arr;
+  // }
+
+  getCategories(movie : any){
+    return movie.genre.split("|")
   }
 
   getRandomImageForMovie(){
