@@ -1,0 +1,29 @@
+::ng-deep.mat-dialog-container {
+  color: white;
+  background: #022323;
+}
+ ::ng-deep.cdk-overlay-backdrop {
+   background: #ffffff54;
+ }
+
+.button {
+  background-color: #43af00;
+  color: white;
+}
+
+.negative-button {
+  background-color: #ff772b;
+  color: white;
+}
+
+.add-button {
+  color: #43af00;
+}
+
+.remove-button {
+  color: #ff772b;
+}
+
+::ng-deep.mat-form-field-wrapper{
+  width: 100%;
+}

@@ -1,18 +1,19 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MaterialModule } from './material/material.module';
-import { HttpClientModule } from '@angular/common/http';
-import { MoviesComponent } from './pages/movies/movies.component';
-import { RecommendedComponent } from './pages/recommended/recommended.component';
-import { AdminComponent } from './pages/admin/admin.component';
-import { GroupsComponent } from './pages/groups/groups.component';
-import { MatChip, MAT_CHIPS_DEFAULT_OPTIONS } from '@angular/material/chips';
-import { FormsModule } from '@angular/forms';
-import { LoginComponent } from './pages/login/login.component';
+import {AppRoutingModule} from './app-routing.module';
+import {AppComponent} from './app.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MaterialModule} from './material/material.module';
+import {HttpClientModule} from '@angular/common/http';
+import {MoviesComponent} from './pages/movies/movies.component';
+import {RecommendedComponent} from './pages/recommended/recommended.component';
+import {AdminComponent} from './pages/admin/admin.component';
+import {GroupsComponent} from './pages/groups/groups.component';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {LoginComponent} from './pages/login/login.component';
+import {ChartsModule} from 'ng2-charts';
+import {NewGroupDialogComponent} from './popup/new-group-dialog/new-group-dialog.component';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { LoginComponent } from './pages/login/login.component';
     RecommendedComponent,
     AdminComponent,
     GroupsComponent,
-    LoginComponent
+    LoginComponent,
+    NewGroupDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -30,10 +32,13 @@ import { LoginComponent } from './pages/login/login.component';
     BrowserAnimationsModule,
     HttpClientModule,
     MaterialModule,
-    FormsModule
-    
+    FormsModule,
+    ChartsModule,
+    ReactiveFormsModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

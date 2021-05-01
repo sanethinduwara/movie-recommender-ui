@@ -1,24 +1,29 @@
 .user-chip {
-    background: transparent;
-    color: white;
-    border-radius: 8px;
-    border: 1px solid rgba(255, 255, 255, 0.3);
+  background: transparent;
+  color: white;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .user-chip .cancel-icon {
-    color: white;
+  color: white;
 }
 
 .group-id {
-    color: white;
+  color: white;
 }
 
 .group-row {
-    background-color: rgba(255, 255, 255, 0.05);
-    margin: 2px;
+  background-color: rgba(255, 255, 255, 0.05);
+  margin: 2px;
 }
 
-.header-row span{
-    color: white;
-    font-weight: 500;
+.header-row span {
+  color: white;
+  font-weight: 500;
+}
+
+.button {
+  background-color: #43af00;
+  color: white;
 }

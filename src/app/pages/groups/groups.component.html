@@ -1,25 +1,26 @@
 <div class="heading-container d-flex">
-    <h1 class="page-heading my-auto">Groups <span> ({{groups.length}})</span></h1>
+  <h1 class="page-heading my-auto">Groups <span> ({{groups.length}})</span></h1>
+  <button class="ml-auto button" mat-raised-button (click)="openNewGroupDialog()">New Group</button>
 </div>
 <div class="movie-grid">
-    <div class="header-row group-row row py-2">
-        <div class="col-2">
-            <span class="group-id">Group Id</span>
-        </div>
-        <div class="col-10">
-            <span>Users</span>
-        </div>
-    </div>
-<div class="group-row row py-2" *ngFor="let group of groups">
+  <div class="header-row group-row row py-2">
     <div class="col-2">
-        <span class="group-id">{{group.groupId}}</span>
+      <span class="group-id">Group Name</span>
     </div>
     <div class="col-10">
-        <mat-chip-list aria-label="">
-            <mat-chip  class="user-chip" *ngFor="let user of group.users.split(',')" [removable]="true">{{user}}
-                <mat-icon class="cancel-icon" matChipRemove>cancel</mat-icon>
-            </mat-chip>
-          </mat-chip-list>
+      <span>Members</span>
     </div>
-</div>
+  </div>
+  <div class="group-row row py-2" *ngFor="let group of groups">
+    <div class="col-2">
+      <span class="group-id">{{group.groupName}}</span>
+    </div>
+    <div class="col-10">
+      <mat-chip-list aria-label="">
+        <mat-chip class="user-chip" *ngFor="let user of group.users.split(',')" [removable]="true">User {{user}}
+          <mat-icon class="cancel-icon" matChipRemove>cancel</mat-icon>
+        </mat-chip>
+      </mat-chip-list>
+    </div>
+  </div>
 </div>

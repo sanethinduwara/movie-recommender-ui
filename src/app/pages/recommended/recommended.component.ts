@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { Movie } from 'src/app/model/movie.model';
-import { AuthenticationService } from 'src/app/service/authentication.service';
-import { MovieService } from 'src/app/service/movie.service';
+import {Component, OnInit} from '@angular/core';
+import {Movie} from 'src/app/model/movie.model';
+import {AuthenticationService} from 'src/app/service/authentication.service';
+import {MovieService} from 'src/app/service/movie.service';
 
 @Component({
   selector: 'app-recommended',
@@ -10,27 +10,28 @@ import { MovieService } from 'src/app/service/movie.service';
 })
 export class RecommendedComponent implements OnInit {
 
-  
   movies: Movie[] = [];
   movieService: MovieService;
-  groups:any[] = []
-  isGroup:boolean = false;
+  groups: any[] = [];
+  isGroup = false;
   currentUser: any = null;
   loading = false;
 
-  constructor(movieService: MovieService, private authService:AuthenticationService) {
+  constructor(movieService: MovieService, private authService: AuthenticationService) {
     this.movieService = movieService;
-    this.authService.currentUser.subscribe(u => {this.currentUser = u});
+    this.authService.currentUser.subscribe(u => {
+      this.currentUser = u;
+    });
 
   }
 
-  ngOnInit(){
+  ngOnInit(): void {
     this.isGroup = false;
     this.loadMoviesByIdAndType(this.currentUser.id, 'user');
     this.loadGroupsForUser(this.currentUser.id);
   }
 
-  loadMoviesByIdAndType(id: number, type: string){
+  loadMoviesByIdAndType(id: number, type: string): void {
     this.loading = true;
     this.movieService.getRecommendedMoviesByIdAndType(id, type).subscribe(res => {
       this.movies = res;
@@ -38,49 +39,35 @@ export class RecommendedComponent implements OnInit {
         element.imageUrl = this.getRandomImageForMovie();
       });
       this.loading = false;
-    })
+    });
   }
 
-  loadGroupsForUser(id: number){
-    this.movieService.getGroupsByUserId(id).subscribe(res=> {
+  loadGroupsForUser(id: number): void {
+    this.movieService.getGroupsByUserId(id).subscribe((res: any) => {
       this.groups = res;
-    })
+    });
   }
 
-  onToggleClick(){
+  onToggleClick(): void {
     this.isGroup = !this.isGroup;
-    if(this.isGroup) {
+    if (this.isGroup) {
       this.loadMoviesByIdAndType(this.groups[0].groupId, 'group');
     } else {
       this.loadMoviesByIdAndType(this.currentUser.id, 'user');
     }
-    
+
   }
 
-  onGroupChange(event: any){
-    console.log(event.value)
+  onGroupChange(event: any): void {
     this.loadMoviesByIdAndType(event.value, 'group');
   }
 
-  // getCategories(movie : any){
-  //   let arr:string[] = []
-  //   Object.getOwnPropertyNames(movie).forEach(key => {
-  //     if(!['movieId'].includes(key)) {
-  //       if (movie[key] === 1) {
-  //         arr.push(key);
-  //       }
-  //     }
-      
-  // });
-  // return arr;
-  // }
-
-  getCategories(movie : any){
-    return movie.genre.split("|")
+  getCategories(movie: any): any[] {
+    return movie.genre.split('|');
   }
 
-  getRandomImageForMovie(){
+  getRandomImageForMovie(): string {
     return '../../../assets/images/' + (Math.floor(Math.random() * (40)) + 1) + '.jpeg';
   }
-  
+
 }

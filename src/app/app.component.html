@@ -1,14 +1,8 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-
 <div class="content" role="main">
 
   <div class="example-container">
-    <!-- <mat-toolbar color="primary" class="example-toolbar">
-      <button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
-      <h1 class="example-app-name">Movie Recommender</h1>
-    </mat-toolbar> -->
-  
     <mat-sidenav-container class="example-sidenav-container">
       <mat-sidenav class="h-100" *ngIf="currentUser" opened="true" mode="side" fixedTopGap="156">
         <div class="d-flex flex-row mx-4 mt-4">
@@ -28,13 +22,13 @@
         </mat-nav-list>
         <button class="logout-btn mt-auto" mat-button (click)="logout()">Logout</button>
       </mat-sidenav>
-  
+
       <mat-sidenav-content>
         <router-outlet></router-outlet>
       </mat-sidenav-content>
     </mat-sidenav-container>
   </div>
 
-  
+
 </div>
 

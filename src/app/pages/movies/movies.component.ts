@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { Movie } from 'src/app/model/movie.model';
-import { MovieService } from 'src/app/service/movie.service';
+import {Component, OnInit} from '@angular/core';
+import {Movie} from 'src/app/model/movie.model';
+import {MovieService} from 'src/app/service/movie.service';
 
 @Component({
   selector: 'app-movies',
@@ -17,38 +17,27 @@ export class MoviesComponent implements OnInit {
     this.movieService = movieService;
   }
 
-  ngOnInit(){
+  ngOnInit(): void {
     this.movieService.getMovies().subscribe(res => {
       this.movies = res;
       this.movies.forEach(element => {
-        element.imageUrl = this.getRandomImageForMovie()
+        element.imageUrl = this.getRandomImageForMovie();
       });
       this.allMovies = this.movies;
-    })
+    });
   }
 
-  filterMoviesByName(event: any) {
-    this.movies = this.allMovies.filter(m => m.movieTitle.toLowerCase().includes(event.target.value.toString().toLowerCase()))
+  filterMoviesByName(event: any): void {
+    this.movies = this.allMovies.filter(m => m.movieTitle.toLowerCase()
+      .includes(event.target.value.toString().toLowerCase()));
   }
 
-  // getCategories(movie : any){
-  //   let arr:string[] = []
-  //   Object.getOwnPropertyNames(movie).forEach(key => {
-  //     if(!['movieId'].includes(key)) {
-  //       if (movie[key] === 1) {
-  //         arr.push(key);
-  //       }
-  //     }
-      
-  // });
-  // return arr;
-  // }
 
-  getCategories(movie : any){
-    return movie.genre.split("|")
+  getCategories(movie: any): any[] {
+    return movie.genre.split('|');
   }
 
-  getRandomImageForMovie(){
+  getRandomImageForMovie(): string {
     return '../../../assets/images/' + (Math.floor(Math.random() * (40)) + 1) + '.jpeg';
   }
 

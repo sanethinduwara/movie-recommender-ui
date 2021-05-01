@@ -1,11 +1,39 @@
 <div class="heading-container d-flex">
-    <h1 class="page-heading my-auto">Admin</h1>
+  <h1 class="page-heading my-auto">Admin</h1>
 </div>
 
 <div class="movie-grid">
-    <div class="d-flex">
-        <button class="button" mat-raised-button [disabled]="isTraining" (click)=retrainModel()>Retrain Model</button>
-        <mat-spinner class="ml-2 my-auto" *ngIf="isTraining" [diameter]="25"></mat-spinner>
+  <div class="d-flex">
+    <mat-spinner class="ml-2 my-auto" *ngIf="isTraining" [diameter]="25"></mat-spinner>
+  </div>
+  <div class="row">
+    <div class="col-6 evaluation-metrics">User RMSE : <span>{{stats.user_rmse}}</span></div>
+    <div class="col-6 evaluation-metrics">Group RMSE : <span>{{stats.group_rmse}}</span></div>
+  </div>
+
+
+  <div class="row mt-4">
+    <div class="col-6">
+      <canvas baseChart width="100%" height="80"
+              [datasets]="userGraphData"
+              [labels]="lineChartLabels"
+              [colors]="userGraphColors"
+              [legend]="lineChartLegend"
+              [chartType]="lineChartType"
+              [plugins]="lineChartPlugins">
+      </canvas>
     </div>
-    <div class="mt-5 evaluation-metrics">RMSE : <span>{{RMSE}}</span></div>
+    <div class="col-6">
+      <canvas baseChart width="100%" height="80"
+              [datasets]="groupGraphData"
+              [labels]="lineChartLabels"
+              [colors]="groupGraphColors"
+              [legend]="lineChartLegend"
+              [chartType]="lineChartType"
+              [plugins]="lineChartPlugins">
+      </canvas>
+    </div>
+  </div>
+
 </div>
+
